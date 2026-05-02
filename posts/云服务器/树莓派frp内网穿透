@@ -809,6 +809,7 @@ nohup ./frpc -c frpc.toml&gt;/dev/null 2&gt;&amp;1 &amp;
 
 
 	
+	<script src="/js/popup.js"></script>
 </body>
 
 </html>
