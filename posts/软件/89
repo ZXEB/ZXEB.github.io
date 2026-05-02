@@ -215,7 +215,7 @@
                                    href="/"
                                         >
                                     <i class="fa-regular fa-house fa-fw"></i>
-                                    HOME
+                                    ACCUEIL
                                     
                                 </a>
 
@@ -249,7 +249,7 @@
                            href="/"
                         >
                             <span>
-                                HOME
+                                ACCUEIL
                             </span>
                             
                                 <i class="fa-regular fa-house fa-sm fa-fw"></i>
@@ -272,7 +272,7 @@
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
         <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
-        <div class="label text-third-text-color text-sm">Categories</div>
+        <div class="label text-third-text-color text-sm">Catégories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
         <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">93</div>
@@ -321,14 +321,14 @@
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
         <span class="desktop">2026-04-05 14:18:46</span>
         <span class="mobile">2026-04-05 14:18:46</span>
-        <span class="hover-info">Created</span>
+        <span class="hover-info">Créé</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
             <span class="desktop">2026-05-02 12:47:22</span>
             <span class="mobile">2026-05-02 12:47:22</span>
-            <span class="hover-info">Updated</span>
+            <span class="hover-info">Mis à jour</span>
         </span>
     
 
@@ -485,27 +485,27 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> 死了吗-为独居人士开发的app</li>
-        <li><strong>Author:</strong> ZXEB</li>
-        <li><strong>Created at
+        <li><strong>Titre:</strong> 死了吗-为独居人士开发的app</li>
+        <li><strong>Auteur:</strong> ZXEB</li>
+        <li><strong>Créé à
                 :</strong> 2026-04-05 14:18:46</li>
         
             <li>
-                <strong>Updated at
+                <strong>Mis à jour à
                     :</strong> 2026-05-02 12:47:22
             </li>
         
         <li>
-            <strong>Link:</strong> https://zxeb.github.io//posts/软件/89
+            <strong>Lien:</strong> https://zxeb.github.io//posts/软件/89
         </li>
         <li>
             <strong>
-                License:
+                Licence:
             </strong>
             
 
             
-                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+                Cette œuvre est sous licence <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
             
         </li>
     </ul>
@@ -528,7 +528,7 @@
 					</span>
 					<span class="title flex justify-center items-center">
 						<span class="post-nav-title-item truncate max-w-48">研学之旅</span>
-						<span class="post-nav-item">Prev posts</span>
+						<span class="post-nav-item">Articles précédents</span>
 					</span>
 				</a>
 			</div>
@@ -538,7 +538,7 @@
 				<a class="next" rel="next" href="/posts/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/88">
 					<span class="title flex justify-center items-center">
 						<span class="post-nav-title-item truncate max-w-48">Linux一键清理脚本</span>
-						<span class="post-nav-item">Next posts</span>
+						<span class="post-nav-item">Articles suivants</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-right"></i>
@@ -555,7 +555,7 @@
 			<div class="comments-container mt-10 w-full ">
     <div id="comment-anchor" class="w-full h-2.5"></div>
     <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
-        Comments
+        Commentaires
     </div>
     
 
@@ -619,7 +619,7 @@
 	<div class="toc-content-container">
 		<div class="post-toc-wrap">
 	<div class="post-toc">
-		<div class="toc-title">On this page</div>
+		<div class="toc-title">Sur cette page</div>
 		<div class="page-title">死了吗-为独居人士开发的app</div>
 		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%BB%E4%BA%86%E5%90%97-%E4%B8%BA%E7%8B%AC%E5%B1%85%E4%BA%BA%E5%A3%AB%E5%BC%80%E5%8F%91%E7%9A%84app"><span class="nav-text">死了吗-为独居人士开发的app</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%95%88%E6%9E%9C"><span class="nav-text">客户端效果</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF-%E7%BD%91%E9%A1%B5%E7%AE%A1%E7%90%86"><span class="nav-text">服务端+网页管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E6%80%A7"><span class="nav-text">特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="nav-text">项目结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-text">技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B"><span class="nav-text">部署教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E8%BD%AF%E4%BB%B6%E7%AB%AF%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="nav-text">关于软件端使用教程</span></a></li></ol></li></ol>
 
@@ -649,7 +649,7 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        93 posts in total
+                        93  posts au total
                     </span>
                     
                 </p>
@@ -660,13 +660,13 @@
             <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
                 
                     <span id="busuanzi_container_site_uv" class="lg:!block">
-                        <span class="text-sm">VISITOR COUNT</span>
+                        <span class="text-sm">VISITEURS</span>
                         <span id="busuanzi_value_site_uv"></span>
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv" class="lg:!block">
-                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span class="text-sm">NOMBRE TOTAL DE PAGES VUES</span>
                         <span id="busuanzi_value_site_pv"></span>
                     </span>
                 
@@ -679,7 +679,7 @@
         
         
             <div>
-                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+                Blog en ligne depuis <span class="odometer" id="runtime_days" ></span> Jours <span class="odometer" id="runtime_hours"></span> Hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
             </div>
         
         
@@ -768,11 +768,11 @@
 </div>
 	</div>
 
-	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
-	<button class="image-viewer-close" type="button" aria-label="Close">
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Visionneuse d’images">
+	<button class="image-viewer-close" type="button" aria-label="Fermer">
 		<i class="fa-solid fa-xmark"></i>
 	</button>
-	<button class="image-viewer-prev" type="button" aria-label="Prev">
+	<button class="image-viewer-prev" type="button" aria-label="Précédent">
 		<i class="fa-solid fa-chevron-left"></i>
 	</button>
 	<div class="image-viewer-frame">
@@ -781,7 +781,7 @@
 	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
 		<div class="flex items-center justify-between mb-3">
 			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
-			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Fermer">
 				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
 			</button>
 		</div>
@@ -800,7 +800,7 @@
 		<i class="fa-solid fa-circle-info text-xs"></i>
 		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
 	</button>
-	<button class="image-viewer-next" type="button" aria-label="Next">
+	<button class="image-viewer-next" type="button" aria-label="Suivant">
 		<i class="fa-solid fa-chevron-right"></i>
 	</button>
 </div>
