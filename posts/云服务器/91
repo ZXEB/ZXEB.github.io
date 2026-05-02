@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="ZXEB">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/posts/云服务器/91"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mix space 前端+后端教程-4.19">
+<meta property="og:url" content="http://example.com/posts/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/91">
+<meta property="og:site_name" content="知行间">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-04-18T18:17:03.220Z">
+<meta property="article:modified_time" content="2026-04-18T18:50:33.735Z">
+<meta property="article:author" content="ZXEB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://dl.xp6.top/view.php/923a731fdaa3ca2afe254cbd98bbed26.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://dl.xp6.top/view.php/923a731fdaa3ca2afe254cbd98bbed26.jpg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="https://dl.xp6.top/view.php/923a731fdaa3ca2afe254cbd98bbed26.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            mix space 前端+后端教程-4.19 | ZXEB
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"ch"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"知行间-该站点为镜像站，主站在blog.xp6.top","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/5/1 00:00:00","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/5/1 00:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.i18n = {"search":"Search...","toc":"On this page","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"POWERED BY %s","theme":"THEME","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","post":"Post","posts":"Posts","tagcloud":"Tag Cloud","comment":"Comment","comments":"Comments","home":"Home","archive":"Archive","archives":"Archives","top":"TOP","sticky":"Sticky","go-back-home":"Go Back Home","masonry_loading":"Loading photos...","image_viewer":"Image viewer","close":"Close","exif":{"title":"EXIF","cards":{"camera":"Camera","lens":"Lens","exposure":"Exposure","other":"Other"},"fields":{"make":"Brand","model":"Model","date_taken":"Date taken","lens_model":"Lens","focal_length":"Focal length","focus_mode":"Focus mode","shutter":"Shutter","aperture":"Aperture","iso":"ISO","exposure_program":"Exposure program","exposure_compensation":"Exposure compensation","metering_mode":"Metering mode","flash":"Flash","white_balance":"White balance","latitude":"Latitude","longitude":"Longitude","altitude":"Altitude"},"status":{"loading":"Loading...","no_exif":"No EXIF available","library_missing":"EXIF library not loaded","image_source_missing":"Image source unavailable","unavailable":"EXIF unavailable (blocked by CORS or missing metadata)","flag_unavailable":"EXIF unavailable"}},"about":"About","changelog":"Changelog","links":"Links","link":"Link","friends":"Friends","friend":"Friend","timeline":"Timeline","shuoshuo":"Shuoshuo","bookmarks":"Bookmarks","site_uv":"VISITOR COUNT","site_pv":"TOTAL PAGE VIEWS","read_more":"Read more","wordcount":"Words","min2read":"Mins","status":"Status","runtime":"Blog up for","days":"days","hours":"hrs","minutes":"Min","seconds":"Sec","optimized_by":"and Optimized by Evan","rights":"All Rights Reserved","site_posts":"%s posts in total","site_wordcount":"%s words in total","copyright":{"author":"Author","title":"Title","link":"Link","create_time":"Created at","update_time":"Updated at","license_title":"License","license_content":"This work is licensed under %s.","all_rights_reserved":"All Rights Reserved &#169; %s","public_domain":"This work is in the public domain."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"},"create_time":"Created","update_time":"Updated","expired":"This post is written %s days ago, and the content may not be up to date."};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                ZXEB
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">93</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">mix space 前端+后端教程-4.19</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="https://dl.xp6.top/view.php/923a731fdaa3ca2afe254cbd98bbed26.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">ZXEB</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv5</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-04-19 02:17:03</span>
+        <span class="mobile">2026-04-19 02:17:03</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-04-19 02:50:33</span>
+            <span class="mobile">2026-04-19 02:50:33</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">云服务器</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="mix-space-前端-后端教程-4-19"><a href="#mix-space-前端-后端教程-4-19" class="headerlink" title="mix space 前端+后端教程-4.19"></a>mix space 前端+后端教程-4.19</h1><blockquote>
+<p>其实我之前写过这个mix space的教程，但是那一版当时写的有些草率所以现在来重新写一下</p>
+<p>建议看完一遍再开始操作</p>
+</blockquote>
+<h2 id="准备："><a href="#准备：" class="headerlink" title="准备："></a>准备：</h2><p>1.一个脑子</p>
+<p>2.一台linux服务器，服务器内存不小于2g</p>
+<p>我这里演示系统用的是ubuntu 24</p>
+<h2 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h2><h3 id="环境配置："><a href="#环境配置：" class="headerlink" title="环境配置："></a>环境配置：</h3><p>1.先在服务器里安装好宝塔面板，然后配置好docker和nginx环境</p>
+<p>2.刷新系统包缓存与安装常用&#x2F;必备软件包</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt install git curl vim wget git-lfs -y</span><br></pre></td></tr></table></figure></div>
+
+<p>3.Ubuntu 安装依赖环境</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update &amp;&amp; sudo apt install git curl vim wget git-lfs -y</span><br></pre></td></tr></table></figure></div>
+
+<p>4.安装依赖环境</p>
+<p>依次运行下面两个指令</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pnpm pm2</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>如果第二个指令下载过慢可以使用这个指令切换镜像源 </p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry http://mirrors.cloud.tencent.com/npm/</span><br></pre></td></tr></table></figure></div>
+
+<p>5.安装 NVM</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash</span><br></pre></td></tr></table></figure></div>
+
+<p>6.运行 source ~&#x2F;.profile 命令将环境变量重新加载到当前会话中。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.profile</span><br></pre></td></tr></table></figure></div>
+
+<p>7.列出 Node.JS 的可用版本。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm ls-remote</span><br></pre></td></tr></table></figure></div>
+
+<p>8.确定版本后，运行 nvm install <em>version</em> 命令下载并安装它。例如，安装 Node.JS 20.12.2 ， <strong>强烈推荐 V20.12.2 版本</strong></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># 安装nvm install 20.12.2# 检查版本node -v</span><br></pre></td></tr></table></figure></div>
+
+<p>9.安装 pnpm pm2</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pnpm pm2</span><br></pre></td></tr></table></figure></div>
+
+<p>10.安装 sharp</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm i -g sharppnpm add sharp</span><br><span class="line"></span><br><span class="line"># 配置sharp环境变量</span><br><span class="line"># vim ~/.bashrc</span><br><span class="line"># 在底部加上</span><br><span class="line"># export NEXT_SHARP_PATH=/root/node_modules/sharp</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="安装后端"><a href="#安装后端" class="headerlink" title="安装后端"></a>安装后端</h3><p>先创建个文件夹</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd</span><br></pre></td></tr></table></figure></div>
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p mx-space/server</span><br></pre></td></tr></table></figure></div>
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /root/mx-space/server</span><br></pre></td></tr></table></figure></div>
+
+<p>然后wget一下两个文件</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://fastly.jsdelivr.net/gh/mx-space/core@master/docker-compose.yml</span><br></pre></td></tr></table></figure></div>
+
+<p>下载好后去编辑<code>docker compose </code>文件可使用<code>finalshell</code>，<code>宝塔在线文件管理</code>编辑文件</p>
+<p>在 <code>environment</code> 字段填入对应内容，使其符合 yaml 语法，保存即可。</p>
+<blockquote>
+<p>如果你后续的主题是shiro记得把 <code>image: innei/mx-server:latest</code>改成<code>image: innei/mx-server:10</code> 因为shiro只适配到10.x版本</p>
+</blockquote>
+<ul>
+<li><strong><code>JWT 密钥：JWT_SECRET</code></strong>：需要填写长度不小于 16 个字符，不大于 32 个字符的字符串，用于加密用户的 JWT，务必保存好自己的密钥，不要泄露给他人。</li>
+<li><strong><code>被允许的域名：ALLOWED_ORIGINS</code></strong>：需要填写被允许的域名，通常是前端的域名，如果允许多个域名访问，用英文逗号，分隔。</li>
+<li><strong><code>是否开启加密：ENCRYPT_ENABLE</code></strong>：如果你确定要开启加密，则在配置文件中加入对应内容，开启加密后，你需要在下方填写加密密钥。</li>
+<li><strong><code>加密密钥：ENCRYPT_KEY</code></strong>：如果你不知道这是什么，那么不建议开启此功能，具体内容可参考 <a class="link"   target="_blank" rel="noopener" href="https://mx-space.js.org/docs/usage/security.html" >Key 加密与安全性<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> 关于 JWT 密钥可以使用 <img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://www.toolhelper.cn/favicon.ico"
+                      alt="img" style="zoom: 33%;" 
+                ><a class="link"   target="_blank" rel="noopener" href="https://www.toolhelper.cn/DigestAlgorithm/MD5" >MD5 转换<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>将你熟悉的文字加密作为 JWT 密钥 域名通常为前端域名：例如 <code>www.glsaone.xyz</code> , <code>glsaone.xyz</code>,localhost loacalhost 作为 前端Api 调用需填入</li>
+</ul>
+<p>在相关内容填写完毕记得保存</p>
+<p>随后拉取最新的镜像</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker compose pull</span><br></pre></td></tr></table></figure></div>
+
+<p>启动容器</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker compose up -d</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://dl.xp6.top/view.php/e08377482d119b394313e9659bc157b1.png"
+                     
+                ></p>
+<p>这样就代表容器启动成功了</p>
+<p>接下来打开宝塔面板，到网站里配置反向代理,先自行解析一个域名到服务器里</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://dl.xp6.top/view.php/81f37e0e627ae3c5b5c9f2ef5b544d95.png"
+                     
+                ></p>
+<p>就像这样设置反向代理到2333端口，后续记得打开2333端口作为后端</p>
+<p>这里填写好后到上一个界面，点击配置文件修改里面的配置文件为以下内容</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://dl.xp6.top/view.php/b8abea3b430457f2a91d2989df1cdf18.png"
+                     
+                ></p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">## 反向代理开始</span><br><span class="line">   ## WebSocket</span><br><span class="line">   location /socket.io &#123;</span><br><span class="line">     proxy_pass http://127.0.0.1:2333/socket.io; </span><br><span class="line">     proxy_set_header Host $host; </span><br><span class="line">     proxy_set_header X-Real-IP $remote_addr; </span><br><span class="line">     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; </span><br><span class="line">     proxy_set_header REMOTE-HOST $remote_addr; </span><br><span class="line">     proxy_set_header Upgrade $http_upgrade; </span><br><span class="line">     proxy_set_header Connection &quot;upgrade&quot;; </span><br><span class="line">     proxy_buffering off;</span><br><span class="line">     proxy_http_version 1.1; </span><br><span class="line">     add_header Cache-Control no-cache; </span><br><span class="line">   &#125;</span><br><span class="line">   ## Others</span><br><span class="line">   location / &#123;</span><br><span class="line">     proxy_pass http://127.0.0.1:2333; </span><br><span class="line">     proxy_set_header Host $host; </span><br><span class="line">     proxy_set_header X-Real-IP $remote_addr; </span><br><span class="line">     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; </span><br><span class="line">     proxy_set_header REMOTE-HOST $remote_addr; </span><br><span class="line">     add_header X-Cache $upstream_cache_status; </span><br><span class="line">   &#125;</span><br><span class="line">   ## 反向代理结束</span><br></pre></td></tr></table></figure></div>
+
+<p>这时你的域名加上&#x2F;proxy&#x2F;qaqdmin就可以访问后端了</p>
+<p>像这样后端就搭建完成了，根据文字一直点击下一步即可</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://dl.xp6.top/view.php/1efc4e280f8b23f1a6cc33c7d8aae125.png"
+                     
+                ></p>
+<h3 id="安装前端"><a href="#安装前端" class="headerlink" title="安装前端"></a>安装前端</h3><p>进入到你服务器的ssh</p>
+<p>先进入文件夹</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /root/mx-space</span><br></pre></td></tr></table></figure></div>
+
+<p>创建文件夹</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir shiro</span><br></pre></td></tr></table></figure></div>
+
+<p>再运行以下两个指令wget文件（记得cd进去）</p>
+<blockquote>
+<p>shiro进入维护状态了，官方md文档中的两个wget都有问题所以我这里贴我自己的链接</p>
+</blockquote>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O docker-compose.yml  https://dl.xp6.top/down.php/da6c8f95728461dd73a8cb1aa6b27fb3.yml</span><br></pre></td></tr></table></figure></div>
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O .env  https://dl.xp6.top/down.php/f661b65565f853bd2e0cdfc8577c8350.env</span><br></pre></td></tr></table></figure></div>
+
+<p>随后修改.env文件,多余的两行删掉即可</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://dl.xp6.top/view.php/6aaddbb14033a23203e4e60027dc8a67.png"
+                     
+                ></p>
+<p>最后</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker compose pull</span><br></pre></td></tr></table></figure></div>
+
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker compose up -d</span><br></pre></td></tr></table></figure></div>
+
+<p>启动前端即可</p>
+<p>接下来去配置前端的反代，和上面的一样把端口改成2444就好了</p>
+<p>配置文件改成这个</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">location ~* \.(gif|png|jpg|css|js|woff|woff2)$ &#123;</span><br><span class="line">      proxy_pass http://127.0.0.1:2323;</span><br><span class="line">      proxy_set_header Host $host;</span><br><span class="line">      proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">      proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">      expires 30d;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">      proxy_pass http://127.0.0.1:2323;</span><br><span class="line">      proxy_set_header Host $host;</span><br><span class="line">      proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">      proxy_set_header REMOTE-HOST $remote_addr;</span><br><span class="line">      add_header X-Cache $upstream_cache_status;</span><br><span class="line">      add_header Cache-Control no-cache;</span><br><span class="line">      proxy_intercept_errors on;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>最后再去修改后端里的云函数</p>
+<h3 id="在后台配置云函数"><a href="#在后台配置云函数" class="headerlink" title="在后台配置云函数"></a>在后台配置云函数</h3><p>进入 Mix Space 后台，进入「配置与云函数」页面，点击右上角的新增按钮，在编辑页面中，填入以下设置：</p>
+<blockquote>
+<p>请注意，这份配置你需要自行修改成符合你的需求的配置。直接使用下面的配置可能会导致你的博客无法按照你的预期运行。</p>
+</blockquote>
+<p>下面的配置可能不全，更多配置项的信息请移步配置项了解。</p>
+<p>此外，配置也可写成 YAML 格式，此时数据类型应选择 <strong>YAML</strong></p>
+<ul>
+<li>名称：shiro</li>
+<li>引用：theme</li>
+<li>数据类型：JSON</li>
+<li>数据：（点击下方的按钮复制）</li>
+</ul>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;footer&quot;: &#123;</span><br><span class="line">    &quot;otherInfo&quot;: &#123;</span><br><span class="line">      &quot;date&quot;: &quot;2020-&#123;&#123;now&#125;&#125;&quot;,</span><br><span class="line">      &quot;icp&quot;: &#123;</span><br><span class="line">        &quot;text&quot;: &quot;萌 ICP 备 20236136 号&quot;,</span><br><span class="line">        &quot;link&quot;: &quot;https://icp.gov.moe/?keyword=20236136&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;linkSections&quot;: [</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;关于&quot;,</span><br><span class="line">        &quot;links&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;name&quot;: &quot;关于本站&quot;,</span><br><span class="line">            &quot;href&quot;: &quot;/about-site&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;name&quot;: &quot;关于我&quot;,</span><br><span class="line">            &quot;href&quot;: &quot;/about&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;name&quot;: &quot;关于此项目&quot;,</span><br><span class="line">            &quot;href&quot;: &quot;https://github.com/innei/Shiro&quot;,</span><br><span class="line">            &quot;external&quot;: true</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;更多&quot;,</span><br><span class="line">        &quot;links&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;name&quot;: &quot;时间线&quot;,</span><br><span class="line">            &quot;href&quot;: &quot;/timeline&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;name&quot;: &quot;友链&quot;,</span><br><span class="line">            &quot;href&quot;: &quot;/friends&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;name&quot;: &quot;监控&quot;,</span><br><span class="line">            &quot;href&quot;: &quot;https://status.innei.in/status/main&quot;,</span><br><span class="line">            &quot;external&quot;: true</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        &quot;name&quot;: &quot;联系&quot;,</span><br><span class="line">        &quot;links&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;name&quot;: &quot;写留言&quot;,</span><br><span class="line">            &quot;href&quot;: &quot;/message&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;name&quot;: &quot;发邮件&quot;,</span><br><span class="line">            &quot;href&quot;: &quot;mailto:i@innei.ren&quot;,</span><br><span class="line">            &quot;external&quot;: true</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;name&quot;: &quot;GitHub&quot;,</span><br><span class="line">            &quot;href&quot;: &quot;https://github.com/innei&quot;,</span><br><span class="line">            &quot;external&quot;: true</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;config&quot;: &#123;</span><br><span class="line">    &quot;color&quot;: &#123;</span><br><span class="line">      &quot;light&quot;: [</span><br><span class="line">        &quot;#33A6B8&quot;,</span><br><span class="line">        &quot;#FF6666&quot;,</span><br><span class="line">        &quot;#26A69A&quot;,</span><br><span class="line">        &quot;#fb7287&quot;,</span><br><span class="line">        &quot;#69a6cc&quot;,</span><br><span class="line">        &quot;#F11A7B&quot;,</span><br><span class="line">        &quot;#78C1F3&quot;,</span><br><span class="line">        &quot;#FF6666&quot;,</span><br><span class="line">        &quot;#7ACDF6&quot;</span><br><span class="line">      ],</span><br><span class="line">      &quot;dark&quot;: [</span><br><span class="line">        &quot;#F596AA&quot;,</span><br><span class="line">        &quot;#A0A7D4&quot;,</span><br><span class="line">        &quot;#ff7b7b&quot;,</span><br><span class="line">        &quot;#99D8CF&quot;,</span><br><span class="line">        &quot;#838BC6&quot;,</span><br><span class="line">        &quot;#FFE5AD&quot;,</span><br><span class="line">        &quot;#9BE8D8&quot;,</span><br><span class="line">        &quot;#A1CCD1&quot;,</span><br><span class="line">        &quot;#EAAEBA&quot;</span><br><span class="line">      ]</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &quot;bg&quot;: [</span><br><span class="line">      &quot;https://github.com/Innei/static/blob/master/images/F0q8mwwaIAEtird.jpeg?raw=true&quot;,</span><br><span class="line">      &quot;https://github.com/Innei/static/blob/master/images/IMG_2111.jpeg.webp.jpg?raw=true&quot;</span><br><span class="line">    ],</span><br><span class="line">    &quot;custom&quot;: &#123;</span><br><span class="line">      &quot;css&quot;: [],</span><br><span class="line">      &quot;styles&quot;: [],</span><br><span class="line">      &quot;js&quot;: [],</span><br><span class="line">      &quot;scripts&quot;: []</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;site&quot;: &#123;</span><br><span class="line">      &quot;favicon&quot;: &quot;/innei.svg&quot;,</span><br><span class="line">      &quot;faviconDark&quot;: &quot;/innei-dark.svg&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;hero&quot;: &#123;</span><br><span class="line">      &quot;title&quot;: &#123;</span><br><span class="line">        &quot;template&quot;: [</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;h1&quot;,</span><br><span class="line">            &quot;text&quot;: &quot;Hi, I&#x27;m &quot;,</span><br><span class="line">            &quot;class&quot;: &quot;font-light text-4xl&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;h1&quot;,</span><br><span class="line">            &quot;text&quot;: &quot;Innei&quot;,</span><br><span class="line">            &quot;class&quot;: &quot;font-medium mx-2 text-4xl&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;h1&quot;,</span><br><span class="line">            &quot;text&quot;: &quot;👋。&quot;,</span><br><span class="line">            &quot;class&quot;: &quot;font-light text-4xl&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;br&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;h1&quot;,</span><br><span class="line">            &quot;text&quot;: &quot;A NodeJS Full Stack &quot;,</span><br><span class="line">            &quot;class&quot;: &quot;font-light text-4xl&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;code&quot;,</span><br><span class="line">            &quot;text&quot;: &quot;&lt;Developer /&gt;&quot;,</span><br><span class="line">            &quot;class&quot;: &quot;font-medium mx-2 text-3xl rounded p-1 bg-gray-200 dark:bg-gray-800/0 hover:dark:bg-gray-800/100 bg-opacity-0 hover:bg-opacity-100 transition-background duration-200&quot;</span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            &quot;type&quot;: &quot;span&quot;,</span><br><span class="line">            &quot;class&quot;: &quot;inline-block w-[1px] h-8 -bottom-2 relative bg-gray-800/80 dark:bg-gray-200/80 opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:animation-blink&quot;</span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;description&quot;: &quot;An independent developer coding with love.&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;module&quot;: &#123;</span><br><span class="line">      &quot;activity&quot;: &#123;</span><br><span class="line">        &quot;enable&quot;: true,</span><br><span class="line">        &quot;endpoint&quot;: &quot;/fn/ps/update&quot;</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;donate&quot;: &#123;</span><br><span class="line">        &quot;enable&quot;: true,</span><br><span class="line">        &quot;link&quot;: &quot;https://afdian.net/@Innei&quot;,</span><br><span class="line">        &quot;qrcode&quot;: [</span><br><span class="line">          &quot;https://cdn.jsdelivr.net/gh/Innei/img-bed@master/20191211132347.png&quot;,</span><br><span class="line">          &quot;https://cdn.innei.ren/bed/2023/0424213144.png&quot;</span><br><span class="line">        ]</span><br><span class="line">      &#125;,</span><br><span class="line">      &quot;bilibili&quot;: &#123;</span><br><span class="line">        &quot;liveId&quot;: 1434499</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>然后点击右上角的保存</p>
+<p>现在你就可以访问你的前端了</p>
+<p>可能你跟着教程走都会遇到些许问题玄学真的好多！！</p>
+<p>前期的环境配置借鉴了了些<a class="link"   target="_blank" rel="noopener" href="https://www.glsaone.xyz/posts/guide/Mix-Space-Shiro" >龙司的小窝<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>里的内容</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> mix space 前端+后端教程-4.19</li>
+        <li><strong>Author:</strong> ZXEB</li>
+        <li><strong>Created at
+                :</strong> 2026-04-19 02:17:03</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2026-04-19 02:50:33
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://zxeb.github.io//posts/云服务器/91
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/posts/%E5%88%B7%E6%9C%BA/92">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">农历3.8小米解锁节</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/posts/%E7%94%9F%E6%B4%BB/90">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">研学之旅</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.js';
+
+      (function() {
+        const startPath = location.pathname;
+        const startTime = Date.now();
+        const retryDelay = 200;
+        const retryLimit = 5000;
+
+        const runWaline = () => {
+          if (location.pathname !== startPath) {
+            return;
+          }
+
+          const container = document.getElementById('waline');
+          if (!container) {
+            if (Date.now() - startTime < retryLimit) {
+              setTimeout(runWaline, retryDelay);
+            }
+            return;
+          }
+
+          if (window.redefineWalineInstance?.destroy) {
+            window.redefineWalineInstance.destroy();
+          }
+
+          container.innerHTML = '';
+          window.redefineWalineInstance = init({
+            el: '#waline',
+            serverURL: 'https://example.example.com',
+            path: location.pathname,
+            dark: 'body[class~="dark-mode"]',
+            reaction: false,
+            requiredMeta: ['nick', 'mail'],
+            emoji: [],
+                      lang: 'zh-CN',
+          });
+        };
+
+        runWaline();
+      })();
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">mix space 前端+后端教程-4.19</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mix-space-%E5%89%8D%E7%AB%AF-%E5%90%8E%E7%AB%AF%E6%95%99%E7%A8%8B-4-19"><span class="nav-text">mix space 前端+后端教程-4.19</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%EF%BC%9A"><span class="nav-text">准备：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A3%E6%96%87%EF%BC%9A"><span class="nav-text">正文：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="nav-text">环境配置：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%90%8E%E7%AB%AF"><span class="nav-text">安装后端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%89%8D%E7%AB%AF"><span class="nav-text">安装前端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E5%90%8E%E5%8F%B0%E9%85%8D%E7%BD%AE%E4%BA%91%E5%87%BD%E6%95%B0"><span class="nav-text">在后台配置云函数</span></a></li></ol></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">ZXEB</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        93 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
+	<button class="image-viewer-close" type="button" aria-label="Close">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="Prev">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="Next">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>

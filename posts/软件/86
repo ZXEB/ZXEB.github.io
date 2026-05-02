@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    
+    <meta name="author" content="ZXEB">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes ASAP (before DOMContentLoaded)
+            (function() {
+                const addBodyClass = () => {
+                    const b = document.body;
+                    if (!b) return false;
+                    b.classList.add(theme + "-mode");
+                    return true;
+                };
+
+                // Try immediately
+                if (addBodyClass()) return;
+
+                // Observe until body exists
+                const mo = new MutationObserver(() => {
+                    if (addBodyClass()) mo.disconnect();
+                });
+                mo.observe(document.documentElement, { childList: true, subtree: true });
+            })();
+        })();
+    </script>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://example.com/posts/软件/86"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xiaomi ai取餐码 Starlsland">
+<meta property="og:url" content="http://example.com/posts/%E8%BD%AF%E4%BB%B6/86">
+<meta property="og:site_name" content="知行间">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-03-06T04:31:49.419Z">
+<meta property="article:modified_time" content="2026-05-02T04:47:22.000Z">
+<meta property="article:author" content="ZXEB">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="https://dl.xp6.top/view.php/923a731fdaa3ca2afe254cbd98bbed26.jpg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://dl.xp6.top/view.php/923a731fdaa3ca2afe254cbd98bbed26.jpg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="https://dl.xp6.top/view.php/923a731fdaa3ca2afe254cbd98bbed26.jpg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            xiaomi ai取餐码 Starlsland | ZXEB
+        
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/css/build/tailwind.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"example.com","root":"/","language":"ch"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"delete_mask":false,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":false,"custom_message":null},"side_tools":{"gear_rotation":true,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"知行间-该站点为镜像站，主站在blog.xp6.top","subtitle":{"text":[],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"style":"default","links":[{"icon":"fa-brands fa-github","url":null},{"icon":"fa-brands fa-twitter","url":null},{"icon":"fa-solid fa-at","url":"you@example.com"},{"icon":"fa-brands fa-telegram","url":null},{"icon":"/images/custom-icon.svg","url":null}],"qrs":[{"icon":"fa-brands fa-weixin","qr":null},{"icon":"/images/custom-icon.svg","qr":null}]}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1","theme":{"light":"default","dark":"dark"}}},"version":"2.9.0","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur","masonry":{"batch_size":12,"initial_batch_size":24}},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footer":{"runtime":true,"icon":"<i class=\"fa-solid fa-heart fa-beat\" style=\"--fa-animation-duration: 0.5s; color: #f54545\"></i>","start":"2022/5/1 00:00:00","statistics":true,"customize":null,"icp":{"enable":false,"number":null,"url":null}},"footerStart":"2022/5/1 00:00:00","mermaid":{"style":{"light":"default","dark":"dark"}}};
+    window.lang_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+    window.i18n = {"search":"Search...","toc":"On this page","prev":"Prev","next":"Next","prev_posts":"Prev posts","next_posts":"Next posts","page":"Page %d","recent_posts":"Recent Posts","share":"Share","powered_by":"POWERED BY %s","theme":"THEME","rss_feed":"RSS Feed","category":"Category","categories":"Categories","tag":"Tag","tags":"Tags","post":"Post","posts":"Posts","tagcloud":"Tag Cloud","comment":"Comment","comments":"Comments","home":"Home","archive":"Archive","archives":"Archives","top":"TOP","sticky":"Sticky","go-back-home":"Go Back Home","masonry_loading":"Loading photos...","image_viewer":"Image viewer","close":"Close","exif":{"title":"EXIF","cards":{"camera":"Camera","lens":"Lens","exposure":"Exposure","other":"Other"},"fields":{"make":"Brand","model":"Model","date_taken":"Date taken","lens_model":"Lens","focal_length":"Focal length","focus_mode":"Focus mode","shutter":"Shutter","aperture":"Aperture","iso":"ISO","exposure_program":"Exposure program","exposure_compensation":"Exposure compensation","metering_mode":"Metering mode","flash":"Flash","white_balance":"White balance","latitude":"Latitude","longitude":"Longitude","altitude":"Altitude"},"status":{"loading":"Loading...","no_exif":"No EXIF available","library_missing":"EXIF library not loaded","image_source_missing":"Image source unavailable","unavailable":"EXIF unavailable (blocked by CORS or missing metadata)","flag_unavailable":"EXIF unavailable"}},"about":"About","changelog":"Changelog","links":"Links","link":"Link","friends":"Friends","friend":"Friend","timeline":"Timeline","shuoshuo":"Shuoshuo","bookmarks":"Bookmarks","site_uv":"VISITOR COUNT","site_pv":"TOTAL PAGE VIEWS","read_more":"Read more","wordcount":"Words","min2read":"Mins","status":"Status","runtime":"Blog up for","days":"days","hours":"hrs","minutes":"Min","seconds":"Sec","optimized_by":"and Optimized by Evan","rights":"All Rights Reserved","site_posts":"%s posts in total","site_wordcount":"%s words in total","copyright":{"author":"Author","title":"Title","link":"Link","create_time":"Created at","update_time":"Updated at","license_title":"License","license_content":"This work is licensed under %s.","all_rights_reserved":"All Rights Reserved &#169; %s","public_domain":"This work is in the public domain."},"ago":{"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"},"create_time":"Created","update_time":"Updated","expired":"This post is written %s days ago, and the content may not be up to date."};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                ZXEB
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    HOME
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                HOME
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="label text-third-text-color text-sm">Tags</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">8</div>
+        <div class="label text-third-text-color text-sm">Categories</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">93</div>
+        <div class="label text-third-text-color text-sm">Posts</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">xiaomi ai取餐码 Starlsland</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] shrink-0 rounded-medium border border-border-color p-px">
+				<img src="https://dl.xp6.top/view.php/923a731fdaa3ca2afe254cbd98bbed26.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">ZXEB</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv5</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-03-06 12:31:49</span>
+        <span class="mobile">2026-03-06 12:31:49</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-05-02 12:47:22</span>
+            <span class="mobile">2026-05-02 12:47:22</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h1 id="xiaomi-ai取餐码-Starlsland"><a href="#xiaomi-ai取餐码-Starlsland" class="headerlink" title="xiaomi ai取餐码 Starlsland"></a>xiaomi ai取餐码 Starlsland</h1><blockquote>
+<p>前言：看到oppo的ai取餐码有点眼馋，然后社区大佬正好做了个软件可以实现ai取餐码，顺便发个文章水一下</p>
+</blockquote>
+<blockquote>
+<p>注意：该软件可能在发布文章时可以使用后期可能会被修复</p>
+</blockquote>
+<p>先简单说一下这个软件是怎么实现上岛的</p>
+<p>这个软件没有简单的去调用.300版本的 <code>Live Activities</code>上岛</p>
+<p>它是调用了hyper3的一个bug可以实现系统级的上岛，但是具体支持的版本我不太清楚，所以这里我只能贴一张我当前手机的版本号，如果你有比我低或高的可以试试是否可以正常使用</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://dl.xp6.top/view.php/714b4733347d643ed353f9ced520caaa.jpg"
+                      style="zoom:33%;" 
+                >
+
+<p>本期文章的软件是在这个版本下正常运行的其他版本我不清楚</p>
+<h3 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h3><h4 id="激活shizuku与下载"><a href="#激活shizuku与下载" class="headerlink" title="激活shizuku与下载"></a>激活shizuku与下载</h4><p>首先你要先使用你手机的adb激活shizuku</p>
+<p>这个我就不赘述了网上都是教程，如果你连这个都不会那我不建议你继续操作</p>
+<p>然后安装<code>Starlsland</code>软件</p>
+<p><a class="link"   target="_blank" rel="noopener" href="https://pan.quark.cn/s/db306f01dfd8" >点我下载（这里我贴的是作者给的链接如果失效请到作者主页找新的链接）<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>  <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1xGABzzEK2/?vd_source=c1452b9806e52acf56fca29d2cb96758#reply292268296129" >点我查看开发者视频<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<p>下载好软件后正常给权限即可</p>
+<p>我这里主要讲的是提示词那一页</p>
+<h4 id="提示词修改"><a href="#提示词修改" class="headerlink" title="提示词修改"></a>提示词修改</h4><p>如果你平时的app都能被正常识别那你可以不看这一段</p>
+<img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://dl.xp6.top/view.php/4a31e66791f30c9b89a70981d00788c0.jpg"
+                      style="zoom:33%;" 
+                >
+
+<p>我在使用的时候发现我美团取餐码和快递的取件码无法被正常识别</p>
+<p>然后我就修改了亿点提示词，大家可以复制使用</p>
+<p>OCR Prompt</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">提取图片中所有可见文字。</span><br><span class="line"></span><br><span class="line">要求：</span><br><span class="line">1. 保持原始语言、大小写、数字和换行格式。</span><br><span class="line">2. 不要补全、猜测或修改任何文字。</span><br><span class="line">3. 所有数字必须完整保留，包括：</span><br><span class="line">   - 取餐码</span><br><span class="line">   - 订单号</span><br><span class="line">   - 金额</span><br><span class="line">   - 数量</span><br><span class="line">4. 如果同一数字出现多次，全部保留。</span><br><span class="line">5. 不要省略短数字（1-6位数字通常是取餐码）。</span><br><span class="line"></span><br><span class="line">只输出识别到的文本内容，不要解释。</span><br></pre></td></tr></table></figure></div>
+
+<p>VLM Prompt</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line">你是一个外卖/茶饮订单截图信息提取助手。请从截图中提取以下字段，返回一个 JSON 对象：</span><br><span class="line"></span><br><span class="line">pickupCode, storeName, brandName, orderAmount, itemCountNumber, itemCountUnit, extras</span><br><span class="line"></span><br><span class="line">识别规则：</span><br><span class="line"></span><br><span class="line">【取餐码识别规则】</span><br><span class="line">1. pickupCode 是页面上最醒目的短码。</span><br><span class="line">2. 常见格式：</span><br><span class="line">   - 1~8位数字（028 / 56 / 101）</span><br><span class="line">   - 字母+数字（A12 / B09）</span><br><span class="line">   - 带符号（#056）</span><br><span class="line">3. 即使标签写的是“订单号”或者“取件码”，只要是短码也属于 pickupCode。</span><br><span class="line">4. 长订单号（通常10位以上纯数字）不是取餐码，应放入 extras.orderNumber。</span><br><span class="line">5. 只要截图中出现疑似取餐码，必须填写 pickupCode。</span><br><span class="line"></span><br><span class="line">【店铺与品牌】</span><br><span class="line">storeName：</span><br><span class="line">门店名称，仅保留门店名，去掉品牌前缀。</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">&quot;瑞幸咖啡 万达店&quot;</span><br><span class="line">storeName = &quot;万达店&quot;</span><br><span class="line"></span><br><span class="line">如果是取件码请参考如下</span><br><span class="line">&quot;金辉华府十号楼架空层2号丰巢柜&quot;</span><br><span class="line">storeNamo = &quot;金辉华府十号楼架空层2号丰巢柜&quot;</span><br><span class="line"></span><br><span class="line">brandName：</span><br><span class="line">品牌名称（如 瑞幸咖啡 / 喜茶 / 古茗 / 蜜雪冰城/丰巢）。</span><br><span class="line">必须是页面明确展示的品牌。</span><br><span class="line"></span><br><span class="line">不要把以下内容当品牌：</span><br><span class="line">- 广告语</span><br><span class="line">- 活动文案</span><br><span class="line">- 人物角色名</span><br><span class="line">- 邀请评价文字</span><br><span class="line"></span><br><span class="line">如果没有明确品牌返回 null。</span><br><span class="line"></span><br><span class="line">【金额】</span><br><span class="line">orderAmount：</span><br><span class="line">页面出现的订单金额字符串，例如：</span><br><span class="line"></span><br><span class="line">¥18.00</span><br><span class="line">￥12</span><br><span class="line">¥25.50</span><br><span class="line">如果没有显示金额就则强制输出&quot;¥0&quot;</span><br><span class="line"></span><br><span class="line">【商品数量】</span><br><span class="line"></span><br><span class="line">itemCountNumber：</span><br><span class="line">商品数量整数，例如：</span><br><span class="line"></span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">如果无法判断返回 1。</span><br><span class="line"></span><br><span class="line">itemCountUnit：</span><br><span class="line">商品单位，例如：</span><br><span class="line"></span><br><span class="line">杯</span><br><span class="line">件</span><br><span class="line">份</span><br><span class="line">个</span><br><span class="line"></span><br><span class="line">如果没有单位返回 个。</span><br><span class="line"></span><br><span class="line">【extras】</span><br><span class="line"></span><br><span class="line">extras 为附加信息对象，可包含：</span><br><span class="line"></span><br><span class="line">pickupCodeLabel</span><br><span class="line">orderNumber</span><br><span class="line"></span><br><span class="line">pickupCodeLabel：</span><br><span class="line">页面标注的取餐码名称，例如：</span><br><span class="line"></span><br><span class="line">取餐码</span><br><span class="line">取餐号</span><br><span class="line">取茶码</span><br><span class="line">取茶号</span><br><span class="line">订单号</span><br><span class="line">取件码</span><br><span class="line"></span><br><span class="line">如果页面没有明确标注：</span><br><span class="line"></span><br><span class="line">饮品类 → 使用 &quot;取茶码&quot;</span><br><span class="line">餐食类 → 使用 &quot;取餐码&quot;</span><br><span class="line"></span><br><span class="line">orderNumber：</span><br><span class="line">长订单号（10位以上数字）。</span><br><span class="line"></span><br><span class="line">【无关截图】</span><br><span class="line"></span><br><span class="line">如果截图不是订单页面：</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">&quot;pickupCode&quot;:null,</span><br><span class="line">&quot;storeName&quot;:null,</span><br><span class="line">&quot;brandName&quot;:null,</span><br><span class="line">&quot;orderAmount&quot;:null,</span><br><span class="line">&quot;itemCountNumber&quot;:null,</span><br><span class="line">&quot;itemCountUnit&quot;:null,</span><br><span class="line">&quot;extras&quot;:&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">【重要规则】</span><br><span class="line"></span><br><span class="line">1. 不要猜测截图不可见信息。</span><br><span class="line">2. extras 没有信息时返回 &#123;&#125;。</span><br><span class="line">3. 只返回 JSON。</span><br><span class="line">4. 不输出 markdown、代码块或解释文字。</span><br><span class="line">6. 即使只有 pickupCode 也必须返回 JSON。</span><br><span class="line">7.如果 pickupCode 只有 1 位数字，在前面补 0 变成两位。</span><br><span class="line">例如 9 → 09</span><br><span class="line">8.如果识别出来的取件码/取餐码出来是6位以上的数字强制输出00</span><br></pre></td></tr></table></figure></div>
+
+<p>输出Schema</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;type&quot;:&quot;object&quot;,&quot;additionalProperties&quot;:false,&quot;required&quot;:[&quot;pickupCode&quot;,&quot;storeName&quot;,&quot;brandName&quot;,&quot;orderAmount&quot;,&quot;itemCountNumber&quot;,&quot;itemCountUnit&quot;,&quot;extras&quot;],&quot;properties&quot;:&#123;&quot;pickupCode&quot;:&#123;&quot;type&quot;:[&quot;string&quot;,&quot;null&quot;],&quot;description&quot;:&quot;取餐码或取餐号或取件码&quot;&#125;,&quot;storeName&quot;:&#123;&quot;type&quot;:[&quot;string&quot;,&quot;null&quot;],&quot;description&quot;:&quot;门店名称&quot;&#125;,&quot;brandName&quot;:&#123;&quot;type&quot;:[&quot;string&quot;,&quot;null&quot;],&quot;description&quot;:&quot;品牌名称&quot;&#125;,&quot;orderAmount&quot;:&#123;&quot;type&quot;:[&quot;string&quot;,&quot;null&quot;],&quot;description&quot;:&quot;订单金额&quot;&#125;,&quot;itemCountNumber&quot;:&#123;&quot;type&quot;:[&quot;integer&quot;,&quot;null&quot;],&quot;description&quot;:&quot;商品数量&quot;&#125;,&quot;itemCountUnit&quot;:&#123;&quot;type&quot;:[&quot;string&quot;,&quot;null&quot;],&quot;description&quot;:&quot;商品单位&quot;&#125;,&quot;extras&quot;:&#123;&quot;type&quot;:&quot;object&quot;,&quot;additionalProperties&quot;:&#123;&quot;type&quot;:&quot;string&quot;&#125;,&quot;description&quot;:&quot;附加信息&quot;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>大致的说一下我改了些啥吧</p>
+<p>在VLM Prompt里我为了正常识别快递的取件码，我写了一些东西</p>
+<p>例如</p>
+<p>在<code>pickupCodeLabel</code>里加入了取件码</p>
+<p>还有在<code>orderAmount</code>里加入了如果没有识别到价格就强制输出¥0</p>
+<p>因为这样才能在最后正常的输出，才能在岛上正常显示</p>
+<p>然后就是让一位数的取餐码自动部位（比如取餐码是9 自动补位为09）因为好像如果是一位数软件无法正常显示岛会显示失败</p>
+<p>还有个致命的问题</p>
+<p>它只能正常显示最多6位数的 取件码&#x2F;取餐码</p>
+<p>为了不让整个软件残废我加了如果检测到 取件码&#x2F;取件码为6位时强制输出00，这样至少还能够有个提醒的作用</p>
+<p>如果这个提示词无法忙足你可以尝试自己去修改，曲线救国</p>
+<h4 id="api的使用"><a href="#api的使用" class="headerlink" title="api的使用"></a>api的使用</h4><p>我这里用的api是 <a class="link"   target="_blank" rel="noopener" href="https://api.gpt.ge/" >v-api<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>大家可以去找免费的</p>
+<p>这里推荐使用以下模型</p>
+<p>VLM模型-Qwen&#x2F;Qwen3-VL-32B-Instruct </p>
+<p>OCR模型-deepseek-ai&#x2F;DeepSeek-OCR </p>
+<p>LLM模型-deepseek-ai&#x2F;DeepSeek-V3.2</p>
+<p> 不建议使用思考模型，因为思考耗时太长可能超时</p>
+<p>当然你也可以不用ocr模型，直接使用直连VLM模式，这样可以更省事</p>
+<p>到这里也就差不多结束了，如果喜欢这个功能建议就不要更新系统了，因为已经有人把这个bug提交给小米了可能在未来的哪一次更新中就会修复这个bug</p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> xiaomi ai取餐码 Starlsland</li>
+        <li><strong>Author:</strong> ZXEB</li>
+        <li><strong>Created at
+                :</strong> 2026-03-06 12:31:49</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2026-05-02 12:47:22
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://zxeb.github.io//posts/软件/86
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/posts/%E5%88%B7%E6%9C%BA/87">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">3.8 小米解锁节</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/posts/%E7%94%9F%E6%B4%BB/85">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">大疆action2使用体验</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.js';
+
+      (function() {
+        const startPath = location.pathname;
+        const startTime = Date.now();
+        const retryDelay = 200;
+        const retryLimit = 5000;
+
+        const runWaline = () => {
+          if (location.pathname !== startPath) {
+            return;
+          }
+
+          const container = document.getElementById('waline');
+          if (!container) {
+            if (Date.now() - startTime < retryLimit) {
+              setTimeout(runWaline, retryDelay);
+            }
+            return;
+          }
+
+          if (window.redefineWalineInstance?.destroy) {
+            window.redefineWalineInstance.destroy();
+          }
+
+          container.innerHTML = '';
+          window.redefineWalineInstance = init({
+            el: '#waline',
+            serverURL: 'https://example.example.com',
+            path: location.pathname,
+            dark: 'body[class~="dark-mode"]',
+            reaction: false,
+            requiredMeta: ['nick', 'mail'],
+            emoji: [],
+                      lang: 'zh-CN',
+          });
+        };
+
+        runWaline();
+      })();
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">xiaomi ai取餐码 Starlsland</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xiaomi-ai%E5%8F%96%E9%A4%90%E7%A0%81-Starlsland"><span class="nav-text">xiaomi ai取餐码 Starlsland</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E6%96%87%EF%BC%9A"><span class="nav-text">正文：</span></a></li></ol></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">ZXEB</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        93 posts in total
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">VISITOR COUNT</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">TOTAL PAGE VIEWS</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">POWERED BY <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a></span>
+            <span class="text-sm lg:block">THEME&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.9.0</a></span>
+        </div>
+        
+        
+            <div>
+                Blog up for <span class="odometer" id="runtime_days" ></span> days <span class="odometer" id="runtime_hours"></span> hrs <span class="odometer" id="runtime_minutes"></span> Min <span class="odometer" id="runtime_seconds"></span> Sec
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog fa-spin"></i>
+		</li>
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="arrow-up fas fa-arrow-up"></i>
+			<span class="percent"></span>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container" role="dialog" aria-modal="true" aria-label="Image viewer">
+	<button class="image-viewer-close" type="button" aria-label="Close">
+		<i class="fa-solid fa-xmark"></i>
+	</button>
+	<button class="image-viewer-prev" type="button" aria-label="Prev">
+		<i class="fa-solid fa-chevron-left"></i>
+	</button>
+	<div class="image-viewer-frame">
+		<img src="" alt="">
+	</div>
+	<div class="image-viewer-exif-panel hidden absolute left-1/2 bottom-20 -translate-x-1/2 w-[min(92vw,420px)] max-h-[60vh] overflow-hidden rounded-2xl bg-background-color-transparent-80 p-4 text-left shadow-redefine-flat backdrop-blur-md" role="dialog" aria-label="EXIF" aria-hidden="true">
+		<div class="flex items-center justify-between mb-3">
+			<span class="text-sm font-semibold text-first-text-color">EXIF</span>
+			<button class="image-viewer-exif-close flex h-8 w-8 items-center justify-center rounded-full bg-background-color-transparent-80 text-first-text-color transition hover:bg-background-color-transparent-40" type="button" aria-label="Close">
+				<i class="fa-solid fa-xmark text-[0.65rem]"></i>
+			</button>
+		</div>
+		<div class="image-viewer-exif-cards grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto pr-1 scrollbar-hide"></div>
+		<template class="image-viewer-exif-card-template">
+			<div class="rounded-lg bg-background-color-transparent-40 px-3 py-2">
+				<div class="image-viewer-exif-card-header flex items-center gap-2 mb-1">
+					<i class="image-viewer-exif-card-icon fa-solid fa-circle-info text-xs text-third-text-color"></i>
+					<div class="image-viewer-exif-card-title text-xs font-semibold text-first-text-color"></div>
+				</div>
+				<div class="image-viewer-exif-card-items flex flex-col gap-1"></div>
+			</div>
+		</template>
+	</div>
+	<button class="image-viewer-exif-toggle flex items-center gap-2 hidden absolute left-1/2 bottom-6 -translate-x-1/2 rounded-full border border-border-color bg-background-color-transparent-80 px-4 py-2 text-first-text-color backdrop-blur-md transition hover:bg-background-color-transparent-40" type="button" aria-label="EXIF" aria-expanded="false">
+		<i class="fa-solid fa-circle-info text-xs"></i>
+		<span class="text-xs font-semibold uppercase tracking-wider">EXIF</span>
+	</button>
+	<button class="image-viewer-next" type="button" aria-label="Next">
+		<i class="fa-solid fa-chevron-right"></i>
+	</button>
+</div>
+
+
+	
+
+</main>
+
+
+
+<script src="/js/build/libs/Swup.min.js"></script>
+
+<script src="/js/build/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/build/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/build/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    window.swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+
+    window.dispatchEvent(
+        new CustomEvent("redefine:swup:ready", {
+            detail: {
+                swup: window.swup,
+            },
+        }),
+    );
+</script>
+
+
+
+
+	
+<script src="/js/build/main.js" type="module"></script>
+
+
+
+    
+<script src="/js/build/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/build/libs/moment-with-locales.min.js" data-swup-reload-script=""></script>
+
+
+
+	
+</body>
+
+</html>
